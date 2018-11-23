@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35fc6498-99bb-4d10-b4c2-3bc7f09c869f" name="默认" comment="">
-      <change beforePath="$PROJECT_DIR$/js/test1.js" afterPath="" />
-    </list>
+    <list default="true" id="35fc6498-99bb-4d10-b4c2-3bc7f09c869f" name="默认" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -57,9 +55,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="596" />
-    <option name="y" value="65" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="633" />
+    <option name="y" value="103" />
     <option name="width" value="1275" />
     <option name="height" value="953" />
   </component>
@@ -150,15 +148,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1542976427484</updated>
-      <workItem from="1542976429058" duration="47000" />
+      <workItem from="1542976429058" duration="636000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47000" />
+    <option name="totallyTimeSpent" value="636000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="596" y="65" width="1275" height="953" extended-state="0" />
+    <frame x="633" y="103" width="1275" height="953" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30708036" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />

@@ -233,10 +233,12 @@ var CountInit = function () {
 //初始化人和电脑赢法的统计数组
 var myWin = [];
 var computerWin = [];
+var addWin=[];
 var myAndcomInit = function () {
     for (var i = 0; i < count; i++) {
         myWin[i] = 0;
         computerWin[i] = 0;
+       addWin[i] = 0;
     }
 };
 
@@ -244,15 +246,18 @@ var myAndcomInit = function () {
 var computerAI = function () {
     var myScore = [];
     var computerScore = [];
+    var addScore =[];
     var max = 0;
     var maxi = 0, maxj = 0;
     //初始化
     for (var i = 0; i < 15; i++) {
         myScore[i] = [];
         computerScore[i] = [];
+        addScore[i] = [];
         for (var j = 0; j < 15; j++) {
             myScore[i][j] = 0;
             computerScore[i][j] = 0;
+            addScore[i][j] = 0;
         }
     }
 
@@ -266,43 +271,63 @@ var computerAI = function () {
                         //判断人
                         if (myWin[k] == 1) {
                             myScore[i][j] += grade[rank][0][0];
+                            addScore[i][j] += grade[rank][0][0];
+
                         } else if (myWin[k] == 2) {
                             myScore[i][j] += grade[rank][0][1];
+                            addScore[i][j] += grade[rank][0][1];
                         } else if (myWin[k] == 3) {
                             myScore[i][j] += grade[rank][0][2];
+                            addScore[i][j] += grade[rank][0][2];
                         } else if (myWin[k] == 4) {
                             myScore[i][j] += grade[rank][0][3];
+                            addScore[i][j] += grade[rank][0][3];
                         }
 
                         //判断电脑
                         if (computerWin[k] == 1) {
                             computerScore[i][j] += grade[rank][0][0];
+                            addScore[i][j] += grade[rank][0][0];
                         } else if (computerWin[k] == 2) {
                             computerScore[i][j] += grade[rank][1][1];
+                            addScore[i][j] += grade[rank][1][1];
                         } else if (computerWin[k] == 3) {
                             computerScore[i][j] += grade[rank][1][2];
+                            addScore[i][j] += grade[rank][1][2];
                         } else if (computerWin[k] == 4) {
                             computerScore[i][j] += grade[rank][1][3];
+                            addScore[i][j] += grade[rank][1][3];
                         }
                     }
                 }
 
                 //判断最优点坐标
 
-                //对于人的黑棋
-                if (myScore[i][j] > max) {
-                    max = myScore[i][j];
-                    maxi = i;
-                    maxj = j;
-                } else if (myScore[i][j] == max) {
-                    if (computerScore[i][j] > computerScore[maxi][maxj]) {
-                        maxi = i;
-                        maxj = j;
-                    }
-                }
-                //对于电脑的白棋
-                if (computerScore[i][j] > max) {
-                    max = computerScore[i][j];
+                // //对于人的黑棋
+                // if (myScore[i][j] > max) {
+                //     max = myScore[i][j];
+                //     maxi = i;
+                //     maxj = j;
+                // } else if (myScore[i][j] == max) {
+                //     if (computerScore[i][j] > computerScore[maxi][maxj]) {
+                //         maxi = i;
+                //         maxj = j;
+                //     }
+                // }
+                // //对于电脑的白棋
+                // if (computerScore[i][j] > max) {
+                //     max = computerScore[i][j];
+                //     maxi = i;
+                //     maxj = j;
+                // } else if (computerScore[i][j] == max) {
+                //     if (myScore[i][j] > myScore[maxi][maxj]) {
+                //         maxi = i;
+                //         maxj = j;
+                //     }
+                // }
+                //addScore 统计
+                if (addScore[i][j] > max) {
+                    max = addScore[i][j];
                     maxi = i;
                     maxj = j;
                 } else if (computerScore[i][j] == max) {
