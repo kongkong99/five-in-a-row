@@ -1,3 +1,5 @@
+//备注：所有困难改为二般，因为感觉自己算法达不到困难
+
 //移动化自适应宽度
 var availWidth = window.screen.availWidth;
 var chessWidth = 0.9 * availWidth;
@@ -63,7 +65,7 @@ var easy = document.getElementById('easy');
 //困难
 dif.onclick = function (ev) {
     rank = 0;
-    content.innerText = '困难';
+    content.innerText = '二般';
     init();
 };
 
@@ -303,31 +305,20 @@ var computerAI = function () {
 
                 //判断最优点坐标
 
-                // //对于人的黑棋
-                // if (myScore[i][j] > max) {
-                //     max = myScore[i][j];
-                //     maxi = i;
-                //     maxj = j;
-                // } else if (myScore[i][j] == max) {
-                //     if (computerScore[i][j] > computerScore[maxi][maxj]) {
-                //         maxi = i;
-                //         maxj = j;
-                //     }
-                // }
-                // //对于电脑的白棋
-                // if (computerScore[i][j] > max) {
-                //     max = computerScore[i][j];
-                //     maxi = i;
-                //     maxj = j;
-                // } else if (computerScore[i][j] == max) {
-                //     if (myScore[i][j] > myScore[maxi][maxj]) {
-                //         maxi = i;
-                //         maxj = j;
-                //     }
-                // }
-                //addScore 统计
-                if (addScore[i][j] > max) {
-                    max = addScore[i][j];
+                //对于人的黑棋
+                if (myScore[i][j] > max) {
+                    max = myScore[i][j];
+                    maxi = i;
+                    maxj = j;
+                } else if (myScore[i][j] == max) {
+                    if (computerScore[i][j] > computerScore[maxi][maxj]) {
+                        maxi = i;
+                        maxj = j;
+                    }
+                }
+                //对于电脑的白棋
+                if (computerScore[i][j] > max) {
+                    max = computerScore[i][j];
                     maxi = i;
                     maxj = j;
                 } else if (computerScore[i][j] == max) {
@@ -336,6 +327,17 @@ var computerAI = function () {
                         maxj = j;
                     }
                 }
+                //addScore 统计
+                // if (addScore[i][j] > max) {
+                //     max = addScore[i][j];
+                //     maxi = i;
+                //     maxj = j;
+                // } else if (computerScore[i][j] == max) {
+                //     if (myScore[i][j] > myScore[maxi][maxj]) {
+                //         maxi = i;
+                //         maxj = j;
+                //     }
+                // }
             }
 
         }
@@ -379,7 +381,7 @@ var gradeInit = function () {
 
     //困难模式（我认为最优的，当然肯定不是真正最优的算法）
     grade[0][0] = [1500, 12000, 23000, 43200000];
-    grade[0][1] = [2000, 13200, 23999, 10000000000];
+    grade[0][1] = [2000, 12200, 23999, 10000000000];
 
 //一般模式（防守加进攻）
     grade[1][0] = [200, 12000, 7200000, 43200000];  //当出现2+2 ，填一个使两个都为三时，会赢；

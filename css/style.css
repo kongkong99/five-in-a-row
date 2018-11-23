@@ -40,7 +40,7 @@ header button:hover{
 
 canvas {
     display: block;
-    margin: 50px auto;
+    margin: 50px auto 30px;
     box-shadow:-2px  -2px 2px #efefef,5px 5px 5px #9f8b77;
     background: #e9cbae;
 }
@@ -55,4 +55,10 @@ canvas {
     font-size: 50px;
 }
 
+
+p{
+    text-align: center;
+    font-size: 20px;
+    color: #b69f88;
+}
 
