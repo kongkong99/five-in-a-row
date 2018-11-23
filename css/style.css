@@ -1,3 +1,9 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
 header{
     display:block;
     margin:0 auto;
@@ -7,11 +13,14 @@ header{
 
 header h1{
     font-family:Arial;
-    font-size:50px;
+    font-size:40px;
     font-weight:bold;
     color: #736252;
 }
 
+header div{
+    margin-top: 20px;
+}
 header button{
     position: relative;
     left: -5px;
@@ -23,6 +32,7 @@ header button{
     color:white;
     border-radius:10px;
     margin-left: 10px;
+
 }
 header button:hover{
     background-color:#9f8b77;
@@ -36,11 +46,10 @@ canvas {
 }
 
 #lose,#win{
-    /*width: 450px;*/
-    /*height: 450px;*/
+
     margin: 100px auto;
     text-align: center;
-    /*line-height: 450px;*/
+
     color:#8f7a66;
     text-shadow: 10px 10px 5px rgba(0,0,0,.3);
     font-size: 50px;

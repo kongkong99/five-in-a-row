@@ -1,6 +1,9 @@
 //移动化自适应宽度
 var availWidth = window.screen.availWidth;
 var chessWidth = 0.9 * availWidth;
+if(chessWidth>600){
+    chessWidth=600;
+}
 var gridWidth = (1 / 15) * chessWidth;
 var sideWidth = gridWidth / 2;
 var chessRadius = 0.75 * sideWidth;
@@ -82,6 +85,7 @@ easy.onclick = function (ev) {
 //绘制期棋盘
 var drawChessBoard = function () {
     for (var i = 0; i < 15; i++) {
+
         //竖线
         context.moveTo(sideWidth + i * gridWidth, sideWidth);
         context.lineTo(sideWidth + i * gridWidth, chessWidth - sideWidth);
