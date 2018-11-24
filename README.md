@@ -1,37 +1,11 @@
-## Welcome to GitHub Pages
+# 游戏-五子棋
 
-You can use the [editor on GitHub](https://github.com/kongkong99/five-in-a-row/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+游戏支持PC端和移动端。
+有简单模式，一般模式，二般模式，一般模式和二般模式难度相当，但各有特点，没有困难模式。
+**[点击体验此游戏]**(https://kongkong99.github.io/five-in-a-row/)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+**注：**代码由gulp将es6,scss转化为es5和css，项目中源码都有。
+如果需要使用gulp，请进入项目后先执行
 
-### Markdown
+>npm install
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kongkong99/five-in-a-row/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
