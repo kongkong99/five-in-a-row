@@ -1,22 +1,22 @@
 //备注：所有困难改为二般，因为感觉自己算法达不到困难
 
 //移动化自适应宽度
-var availWidth = window.screen.availWidth;
-var chessWidth = 0.9 * availWidth;
+let availWidth = window.screen.availWidth;
+let chessWidth = 0.9 * availWidth;
 if(chessWidth>600){
     chessWidth=600;
 }
-var gridWidth = (1 / 15) * chessWidth;
-var sideWidth = gridWidth / 2;
-var chessRadius = 0.75 * sideWidth;
+let gridWidth = (1 / 15) * chessWidth;
+let sideWidth = gridWidth / 2;
+let chessRadius = 0.75 * sideWidth;
 //-------------------------------------------
 
-var chess = document.getElementById('chess');
+let chess = document.getElementById('chess');
 chess.width =chessWidth;
 chess.height=chessWidth;
-var context = chess.getContext('2d');
-var win = document.getElementById('win');
-var lose = document.getElementById('lose');
+let context = chess.getContext('2d');
+let win = document.getElementById('win');
+let lose = document.getElementById('lose');
 win.width=chessWidth;
 win.height=chessWidth;
 win.lineHeight=chessWidth;
@@ -24,22 +24,22 @@ win.lineHeight=chessWidth;
 lose.width=chessWidth;
 lose.height=chessWidth;
 lose.lineHeight=chessWidth;
-var rank = 2;
+let rank = 2;
 context.strokeStyle = '#686868';
 
-var over = false; //判断游戏是否结束
-var me = true; //判断哪个颜色棋子落点
-var chessBoard = []; //棋子
+let over = false; //判断游戏是否结束
+let me = true; //判断哪个颜色棋子落点
+let chessBoard = []; //棋子
 
 
 //主流程逻辑
 window.onload = function (ev) {
-    var rank = 2;
+    let rank = 2;
     init();
 };
 
 //主流程初始化
-var init = function () {
+let init = function () {
     //重置画布canvas
     chess.width = chess.width;
 
@@ -57,27 +57,27 @@ var init = function () {
 };
 
 //button点击切换难度
-var content = document.getElementById('content');
-var dif = document.getElementById('difficult');
-var gen = document.getElementById('general');
-var easy = document.getElementById('easy');
+let content = document.getElementById('content');
+let dif = document.getElementById('difficult');
+let gen = document.getElementById('general');
+let easy = document.getElementById('easy');
 
 //困难
-dif.onclick = function (ev) {
+dif.onclick = ()=> {
     rank = 0;
     content.innerText = '二般';
     init();
 };
 
 //一般
-gen.onclick = function (ev) {
+gen.onclick = ()=> {
     rank = 1;
     content.innerText = '一般';
     init();
 };
 
 //简单
-easy.onclick = function (ev) {
+easy.onclick = ()=> {
     rank = 2;
     content.innerText = '简单';
     init();
@@ -85,8 +85,8 @@ easy.onclick = function (ev) {
 
 
 //绘制期棋盘
-var drawChessBoard = function () {
-    for (var i = 0; i < 15; i++) {
+let drawChessBoard = ()=> {
+    for (let i = 0; i < 15; i++) {
 
         //竖线
         context.moveTo(sideWidth + i * gridWidth, sideWidth);
@@ -102,21 +102,21 @@ var drawChessBoard = function () {
 };
 
 //初始化棋子
-var chessInit = function () {
-    for (var i = 0; i < 15; i++) {
+let chessInit =  () => {
+    for (let i = 0; i < 15; i++) {
         chessBoard[i] = [];
-        for (var j = 0; j < 15; j++) {
+        for (let j = 0; j < 15; j++) {
             chessBoard[i][j] = 0;
         }
     }
-}
+};
 
 //画棋子
-var onStep = function (i, j, me) {
+let onStep = (i, j, me) =>{
     context.beginPath();
     context.arc(sideWidth + i * gridWidth, sideWidth + j * gridWidth, chessRadius, 0, 2 * Math.PI);
     context.closePath();
-    var grd = context.createRadialGradient(sideWidth + i * gridWidth + 2, sideWidth + j * gridWidth - 2, chessRadius, sideWidth + i * gridWidth + 2, sideWidth + j * gridWidth - 2, 0);
+    let grd = context.createRadialGradient(sideWidth + i * gridWidth + 2, sideWidth + j * gridWidth - 2, chessRadius, sideWidth + i * gridWidth + 2, sideWidth + j * gridWidth - 2, 0);
     if (me) {
         //黑棋颜色
         grd.addColorStop(0, '#0a0a0a');
@@ -131,31 +131,31 @@ var onStep = function (i, j, me) {
 };
 
 //下棋落点点击事件
-chess.onclick = function (ev) {
+chess.onclick =  (ev) =>{
     if (over) {
         return;
     }
     if (!me) {
         return;
     }
-    var x = ev.offsetX;
-    var y = ev.offsetY;
-    var i = Math.floor(x / gridWidth);
-    var j = Math.floor(y / gridWidth);
+    let x = ev.offsetX;
+    let y = ev.offsetY;
+    let i = Math.floor(x / gridWidth);
+    let j = Math.floor(y / gridWidth);
     if (chessBoard[i][j] == 0) {
         onStep(i, j, me);
-        console.log(i, j);
+
         //黑棋
         chessBoard[i][j] = 1;
 
         //观察并设置落点后，判断胜负情况
-        for (var k = 0; k < count; k++) {
+        for (let k = 0; k < count; k++) {
             if (wins[i][j][k]) {
                 myWin[k]++;
 
                 computerWin[k] = 6;
                 if (myWin[k] == 5) {
-                    setTimeout(function () {
+                    setTimeout(()=> {
                         chess.style.display = 'none';
                         win.style.display = 'none';
                         lose.style.display = 'none';
@@ -177,23 +177,26 @@ chess.onclick = function (ev) {
 };
 
 //初始化赢法数组
-var wins = [];
-var winsInit = function () {
-    for (var i = 0; i < 15; i++) {
+let wins = [];
+let winsInit =  () => {
+    for (let i = 0; i < 15; i++) {
         wins[i] = [];
-        for (var j = 0; j < 15; j++) {
+        for (let j = 0; j < 15; j++) {
             wins[i][j] = [];
         }
     }
 };
 
 //初始化统计赢法种类
-var count = 0;
-var CountInit = function () {
+let count = 0;
+/**
+ * @return {number}
+ */
+let CountInit = function () {
     //横向统计
-    for (var i = 0; i < 15; i++) {
-        for (var j = 0; j < 11; j++) {
-            for (var k = 0; k < 5; k++) {
+    for (let i = 0; i < 15; i++) {
+        for (let j = 0; j < 11; j++) {
+            for (let k = 0; k < 5; k++) {
                 wins[i][j + k][count] = true;
             }
             count++;
@@ -201,18 +204,18 @@ var CountInit = function () {
     }
 
     //纵向统计
-    for (var i = 0; i < 15; i++) {
-        for (var j = 0; j < 11; j++) {
-            for (var k = 0; k < 5; k++) {
+    for (let i = 0; i < 15; i++) {
+        for (let j = 0; j < 11; j++) {
+            for (let k = 0; k < 5; k++) {
                 wins[j + k][i][count] = true;
             }
             count++;
         }
     }
     //正对角线方向统计
-    for (var i = 0; i < 11; i++) {
-        for (var j = 14; j > 3; j--) {
-            for (var k = 0; k < 5; k++) {
+    for (let i = 0; i < 11; i++) {
+        for (let j = 14; j > 3; j--) {
+            for (let k = 0; k < 5; k++) {
                 wins[i + k][j - k][count] = true;
             }
             count++;
@@ -220,9 +223,9 @@ var CountInit = function () {
     }
 
     //反对角线方向统计
-    for (var i = 0; i < 11; i++) {
-        for (var j = 0; j < 11; j++) {
-            for (var k = 0; k < 5; k++) {
+    for (let i = 0; i < 11; i++) {
+        for (let j = 0; j < 11; j++) {
+            for (let k = 0; k < 5; k++) {
                 wins[i + k][j + k][count] = true;
             }
             count++;
@@ -233,11 +236,11 @@ var CountInit = function () {
 };
 
 //初始化人和电脑赢法的统计数组
-var myWin = [];
-var computerWin = [];
-var addWin=[];
-var myAndcomInit = function () {
-    for (var i = 0; i < count; i++) {
+let myWin = [];
+let computerWin = [];
+let addWin=[];
+let myAndcomInit =  () => {
+    for (let i = 0; i < count; i++) {
         myWin[i] = 0;
         computerWin[i] = 0;
        addWin[i] = 0;
@@ -245,18 +248,18 @@ var myAndcomInit = function () {
 };
 
 //电脑黑棋落点
-var computerAI = function () {
-    var myScore = [];
-    var computerScore = [];
-    var addScore =[];
-    var max = 0;
-    var maxi = 0, maxj = 0;
+let computerAI = ()=> {
+    let myScore = [];
+    let computerScore = [];
+    let addScore =[];
+    let max = 0;
+    let maxi = 0, maxj = 0;
     //初始化
-    for (var i = 0; i < 15; i++) {
+    for (let i = 0; i < 15; i++) {
         myScore[i] = [];
         computerScore[i] = [];
         addScore[i] = [];
-        for (var j = 0; j < 15; j++) {
+        for (let j = 0; j < 15; j++) {
             myScore[i][j] = 0;
             computerScore[i][j] = 0;
             addScore[i][j] = 0;
@@ -265,10 +268,10 @@ var computerAI = function () {
 
 
     //AI算法实现
-    for (var i = 0; i < 15; i++) {
-        for (var j = 0; j < 15; j++) {
+    for (let i = 0; i < 15; i++) {
+        for (let j = 0; j < 15; j++) {
             if (chessBoard[i][j] == 0) {
-                for (var k = 0; k < count; k++) {
+                for (let k = 0; k < count; k++) {
                     if (wins[i][j][k]) {
                         //判断人
                         if (myWin[k] == 1) {
@@ -346,12 +349,12 @@ var computerAI = function () {
     onStep(maxi, maxj, false);
     //console.log(maxi,maxj);
     chessBoard[maxi][maxj] = 2;
-    for (var k = 0; k < count; k++) {
+    for (let k = 0; k < count; k++) {
         if (wins[maxi][maxj][k]) {
             computerWin[k]++;
             myWin[k] = 6;
             if (computerWin[k] == 5) {
-                setTimeout(function () {
+                setTimeout( ()=> {
                     chess.style.display = 'none';
                     win.style.display = 'none';
                     lose.style.display = 'none';
@@ -367,13 +370,13 @@ var computerAI = function () {
 };
 
 //游戏难度设定并初始化
-var grade = [];
-var gradeInit = function () {
-    for (var i = 0; i < 3; i++) {
+let grade = [];
+let gradeInit =  () => {
+    for (let i = 0; i < 3; i++) {
         grade[i] = [];
-        for (var j = 0; j < 2; j++) {
+        for (let j = 0; j < 2; j++) {
             grade[i][j] = [];
-            for (var k = 0; k < 4; k++) {
+            for (let k = 0; k < 4; k++) {
                 grade[i][j][k] = 0;
             }
         }
